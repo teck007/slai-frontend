@@ -51,10 +51,7 @@ function copyResult() {
     <header class="border-b bg-white/70 backdrop-blur">
       <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
         <div class="flex items-center gap-2">
-          <!-- <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary font-bold">
-            L
-          </div> -->
-          <img :src="logo" alt="Slai" class="xl:h-16 xl:w-16 md:h-12 md:w-12 sm:h-8 sm:w-8">
+          <img :src="logo" alt="Slai" class="xl:h-16 xl:w-16 md:h-12 md:w-12 sm:h-8 sm:w-8 w-8 h-8">
         </div>
         <!-- <nav class="hidden gap-6 text-sm font-medium text-gray-600 md:flex">
           <a href="#" class="hover:text-gray-900">Inicio</a>
