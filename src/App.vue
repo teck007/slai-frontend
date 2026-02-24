@@ -19,8 +19,7 @@ async function handleShorten(event: Event) {
     const res = await fetch(`${backend}/api/shorten`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${import.meta.env.VITE_API_TOKEN}`
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ url: inputUrl.value }),
     })
