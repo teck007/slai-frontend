@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://slai.dev/sitemap.xml
+
+# Crawl-delay (opcional, ajusta según necesites)
+Crawl-delay: 1
