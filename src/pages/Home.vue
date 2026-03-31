@@ -6,6 +6,8 @@ const result = ref("")
 const loading = ref(false)
 const status = ref("")
 const backend = import.meta.env.VITE_BACKEND_URL
+import{ useAuth } from "@clerk/vue"
+const { getToken } = useAuth()
 
 // Structured Data for SEO
 onMounted(() => {
@@ -45,15 +47,17 @@ async function handleShorten(event: Event) {
   event.preventDefault()
   result.value = ""
   status.value = ""
+  const token = await getToken.value?.()
   if (!inputUrl.value || loading.value) return
+
+  const headers: Record<string, string> = { "Content-Type": "application/json" }
+  if (token) headers.Authorization = `Bearer ${token}`
 
   loading.value = true
   try {
     const res = await fetch(`${backend}/api/shorten`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify({ url: inputUrl.value }),
     })
     const data = await res.json()
