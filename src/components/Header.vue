@@ -32,7 +32,7 @@ import logo from "../assets/logo.png"
             to="/panel"
             class="rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100"
           >
-            Panel
+            Mi cuenta
           </router-link>
           <UserButton afterSignOutUrl="/" />
         </Show>
