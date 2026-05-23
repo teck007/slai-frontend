@@ -170,7 +170,7 @@ watch(deleteModalOpen, (open) => {
           class="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent"
           role="progressbar"
         />
-        <p class="text-sm text-gray-500">Cargando panel...</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Cargando panel...</p>
       </div>
     </div>
 
@@ -180,7 +180,7 @@ watch(deleteModalOpen, (open) => {
       class="mx-auto max-w-4xl px-4 py-12 md:px-6"
     >
       <div class="mb-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
           Bienvenido {{ user?.fullName }}
         </h1>
       </div>
@@ -188,9 +188,9 @@ watch(deleteModalOpen, (open) => {
       <div class="space-y-6">
         <!-- Quick actions -->
         <div
-          class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+          class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900"
         >
-          <h2 class="text-lg font-semibold text-gray-900">Acciones rápidas</h2>
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-50">Acciones rápidas</h2>
           <div class="mt-4 flex flex-wrap gap-3">
             <router-link
               to="/"
@@ -203,16 +203,16 @@ watch(deleteModalOpen, (open) => {
 
         <!-- User links -->
         <div
-          class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+          class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900"
         >
-          <h2 class="text-lg font-semibold text-gray-900">Tus enlaces acortados</h2>
-          <p class="mt-1 text-sm text-gray-500">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-50">Tus enlaces acortados</h2>
+          <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
             Selecciona enlaces y elimínalos de forma permanente cuando quieras.
           </p>
 
           <div
             v-if="linksLoading"
-            class="mt-6 flex items-center gap-3 text-sm text-gray-500"
+            class="mt-6 flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400"
             aria-live="polite"
           >
             <div
@@ -223,7 +223,7 @@ watch(deleteModalOpen, (open) => {
 
           <p
             v-else-if="linksError"
-            class="mt-6 text-sm text-red-600"
+            class="mt-6 text-sm text-red-600 dark:text-red-400"
             role="alert"
           >
             {{ linksError }}
@@ -231,24 +231,24 @@ watch(deleteModalOpen, (open) => {
 
           <p
             v-else-if="links.length === 0"
-            class="mt-6 text-sm text-gray-500"
+            class="mt-6 text-sm text-gray-500 dark:text-gray-400"
           >
             Aún no tienes enlaces. Acorta una URL desde el inicio para verla aquí.
           </p>
 
           <div v-else class="mt-6 space-y-4">
             <div
-              class="flex flex-col gap-4 rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50/80 to-white p-4 sm:flex-row sm:items-center sm:justify-between"
+              class="flex flex-col gap-4 rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50/80 to-white p-4 sm:flex-row sm:items-center sm:justify-between dark:border-gray-700 dark:from-gray-800/50 dark:to-gray-900"
             >
               <label
-                class="group inline-flex cursor-pointer items-center gap-3 text-sm font-medium text-gray-800"
+                class="group inline-flex cursor-pointer items-center gap-3 text-sm font-medium text-gray-800 dark:text-gray-100"
               >
                 <span
                   class="relative flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2 transition group-hover:border-primary/60"
                   :class="
                     allSelected
                       ? 'border-primary bg-primary'
-                      : 'border-gray-300 bg-white'
+                      : 'border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-800'
                   "
                 >
                   <svg
@@ -278,7 +278,7 @@ watch(deleteModalOpen, (open) => {
               <div class="flex flex-wrap items-center gap-2 sm:justify-end">
                 <span
                   v-if="selectedShortUrls.length > 0"
-                  class="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800 ring-1 ring-inset ring-indigo-100"
+                  class="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-800 ring-1 ring-inset ring-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-300 dark:ring-indigo-800"
                 >
                   <span class="h-1.5 w-1.5 rounded-full bg-indigo-500" />
                   {{ selectedShortUrls.length }} marcado{{
@@ -291,7 +291,7 @@ watch(deleteModalOpen, (open) => {
                   :class="
                     selectedShortUrls.length > 0
                       ? 'bg-red-600 text-white hover:bg-red-700'
-                      : 'bg-gray-200 text-gray-500'
+                      : 'bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400'
                   "
                   :disabled="
                     selectedShortUrls.length === 0 || deleteSaving || linksLoading
@@ -317,9 +317,9 @@ watch(deleteModalOpen, (open) => {
               </div>
             </div>
 
-            <p
-              v-if="deleteError"
-              class="text-sm text-red-600"
+              <p
+                v-if="deleteError"
+                class="text-sm text-red-600 dark:text-red-400"
               role="alert"
             >
               {{ deleteError }}
@@ -332,8 +332,8 @@ watch(deleteModalOpen, (open) => {
                 class="group relative rounded-xl border transition"
                 :class="
                   isSelected(link.short_url)
-                    ? 'border-indigo-200 bg-indigo-50/60 shadow-sm ring-1 ring-indigo-100'
-                    : 'border-transparent bg-gray-50/50 hover:border-gray-200 hover:bg-white'
+                    ? 'border-indigo-200 bg-indigo-50/60 shadow-sm ring-1 ring-indigo-100 dark:border-indigo-700 dark:bg-indigo-900/20 dark:ring-indigo-800'
+                    : 'border-transparent bg-gray-50/50 hover:border-gray-200 hover:bg-white dark:bg-gray-800/40 dark:hover:border-gray-600 dark:hover:bg-gray-800'
                 "
               >
                 <div class="flex gap-3 p-3 sm:p-4">
@@ -346,7 +346,7 @@ watch(deleteModalOpen, (open) => {
                       :class="
                         isSelected(link.short_url)
                           ? 'border-primary bg-primary'
-                          : 'border-gray-300 bg-white group-hover:border-primary/50'
+                          : 'border-gray-300 bg-white group-hover:border-primary/50 dark:border-gray-600 dark:bg-gray-800'
                       "
                     >
                       <svg
@@ -381,7 +381,7 @@ watch(deleteModalOpen, (open) => {
                     >
                       {{ fullShortUrl(link.short_url) }}
                     </a>
-                    <span class="break-all text-xs leading-relaxed text-gray-500">
+                    <span class="break-all text-xs leading-relaxed text-gray-500 dark:text-gray-400">
                       {{ link.orig_url }}
                     </span>
                   </div>
@@ -414,14 +414,14 @@ watch(deleteModalOpen, (open) => {
             @click="closeDeleteModal"
           />
           <div
-            class="relative z-10 w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5"
+            class="relative z-10 w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5 dark:bg-gray-900"
             role="dialog"
             aria-modal="true"
             aria-labelledby="delete-dialog-title"
             aria-describedby="delete-dialog-desc"
           >
             <div
-              class="flex items-start gap-4 border-b border-red-50 bg-gradient-to-br from-red-50 to-orange-50/80 px-6 py-5"
+              class="flex items-start gap-4 border-b border-red-50 bg-gradient-to-br from-red-50 to-orange-50/80 px-6 py-5 dark:border-red-900 dark:from-red-950/30 dark:to-orange-950/30"
             >
               <div
                 class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-red-100"
@@ -444,7 +444,7 @@ watch(deleteModalOpen, (open) => {
               <div class="min-w-0 pt-0.5">
                 <h3
                   id="delete-dialog-title"
-                  class="text-lg font-semibold leading-tight text-gray-900"
+                  class="text-lg font-semibold leading-tight text-gray-900 dark:text-gray-50"
                 >
                   ¿Eliminar
                   {{
@@ -455,7 +455,7 @@ watch(deleteModalOpen, (open) => {
                 </h3>
                 <p
                   id="delete-dialog-desc"
-                  class="mt-1.5 text-sm leading-relaxed text-gray-600"
+                  class="mt-1.5 text-sm leading-relaxed text-gray-600 dark:text-gray-400"
                 >
                   Dejarán de funcionar las URLs cortas. No podrás recuperarlas.
                 </p>
@@ -463,37 +463,37 @@ watch(deleteModalOpen, (open) => {
             </div>
 
             <div class="max-h-[40vh] overflow-y-auto px-6 py-4">
-              <p class="text-xs font-medium uppercase tracking-wide text-gray-400">
+              <p class="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500">
                 Vista previa
               </p>
               <ul class="mt-2 space-y-2">
                 <li
                   v-for="item in selectedPreview"
                   :key="item.short_url"
-                  class="rounded-lg bg-gray-50 px-3 py-2 text-sm"
+                  class="rounded-lg bg-gray-50 px-3 py-2 text-sm dark:bg-gray-800"
                 >
-                  <span class="block truncate font-mono text-xs text-indigo-700">
+                  <span class="block truncate font-mono text-xs text-indigo-700 dark:text-white">
                     /{{ item.short_url }}
                   </span>
-                  <span class="mt-0.5 block truncate text-xs text-gray-500">
+                  <span class="mt-0.5 block truncate text-xs text-gray-500 dark:text-gray-400">
                     {{ item.orig_url }}
                   </span>
                 </li>
               </ul>
               <p
                 v-if="selectedPreviewRest > 0"
-                class="mt-3 text-center text-xs text-gray-500"
+                class="mt-3 text-center text-xs text-gray-500 dark:text-gray-400"
               >
                 y {{ selectedPreviewRest }} más…
               </p>
             </div>
 
             <div
-              class="flex flex-col-reverse gap-2 border-t border-gray-100 bg-gray-50/80 px-6 py-4 sm:flex-row sm:justify-end sm:gap-3"
+              class="flex flex-col-reverse gap-2 border-t border-gray-100 bg-gray-50/80 px-6 py-4 sm:flex-row sm:justify-end sm:gap-3 dark:border-gray-800 dark:bg-gray-800/80"
             >
               <button
                 type="button"
-                class="inline-flex justify-center rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:opacity-50"
+                class="inline-flex justify-center rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:opacity-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700"
                 :disabled="deleteSaving"
                 @click="closeDeleteModal"
               >
