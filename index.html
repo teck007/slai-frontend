@@ -40,11 +40,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     
+    <!-- Dark mode FOUC prevention -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('dark-mode');
+          if (stored === 'true' || (stored === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
     <!-- Theme Color -->
     <meta name="theme-color" content="#6366f1" />
     <meta name="msapplication-TileColor" content="#6366f1" />
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-gray-50 dark:bg-gray-900">
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
